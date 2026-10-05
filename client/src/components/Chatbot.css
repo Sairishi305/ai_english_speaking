@@ -1,0 +1,83 @@
+.chat-history {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 20px;
+  padding: 16px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.chat-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.chat-history-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.chat-history-header button {
+  border: none;
+  background: #111827;
+  color: white;
+
+  padding: 7px 12px;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.history-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+
+  margin-top: 6px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background: #f3f4f6;
+}
+
+.history-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  overflow: hidden;
+}
+
+.history-item strong {
+  font-size: 14px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item small {
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: capitalize;
+}

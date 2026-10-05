@@ -1,0 +1,852 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  background: #f7f8fc;
+  color: #171b2d;
+}
+
+button,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+  min-height: 100vh;
+}
+
+
+/* =========================
+   TOP NAV
+========================= */
+
+.top-nav {
+  height: 72px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border-bottom: 1px solid #e8eaf0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 20;
+
+  backdrop-filter: blur(15px);
+}
+
+
+/* BRAND */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.brand-icon {
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #eef0ff;
+
+  font-size: 22px;
+}
+
+
+/* NAV BUTTONS */
+
+.nav-buttons {
+  display: flex;
+
+  gap: 6px;
+}
+
+.nav-button {
+  border: 0;
+
+  background: transparent;
+
+  padding: 9px 16px;
+
+  border-radius: 10px;
+
+  color: #73798b;
+
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.nav-button:hover {
+  background: #f1f2f7;
+}
+
+.nav-button.active {
+  background: #eef0ff;
+
+  color: #4652c7;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   VOICE PAGE
+========================= */
+
+.voice-page {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.voice-page-header {
+  width: 100%;
+
+  max-width: 900px;
+
+  padding: 30px 25px 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.online-dot {
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #42c978;
+
+  box-shadow:
+    0 0 0 5px #e8f8ee;
+}
+
+.voice-page-header h1 {
+  margin: 0;
+
+  font-size: 22px;
+}
+
+.voice-page-header p {
+  margin: 5px 0 0;
+
+  color: #8a90a1;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   TALKING AREA
+========================= */
+
+.talking-area {
+  flex: 1;
+
+  width: 100%;
+
+  max-width: 900px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 15px 20px 25px;
+}
+
+
+/* =========================
+   AI ORB
+========================= */
+
+.ai-orb {
+  width: 190px;
+
+  height: 190px;
+
+  position: relative;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: -20px;
+}
+
+
+/* OUTER GLOW */
+
+.orb-glow {
+  position: absolute;
+
+  inset: -18px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(90, 103, 230, 0.25),
+      rgba(90, 103, 230, 0.08) 45%,
+      transparent 70%
+    );
+
+  filter: blur(8px);
+
+  animation: orbBreathing 3s
+    ease-in-out infinite;
+}
+
+
+/* ORB */
+
+.orb-inner {
+  width: 150px;
+
+  height: 150px;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #9ca6ff,
+      #6572e4 35%,
+      #4653c5 65%,
+      #303b9e
+    );
+
+  box-shadow:
+    0 20px 55px
+      rgba(65, 76, 190, 0.3),
+    inset 10px 10px 30px
+      rgba(255, 255, 255, 0.2),
+    inset -12px -15px 30px
+      rgba(20, 27, 90, 0.25);
+
+  animation:
+    orbFloat 4s ease-in-out infinite;
+}
+
+
+/* ORB FACE */
+
+.orb-face {
+  font-size: 52px;
+
+  filter:
+    drop-shadow(
+      0 5px 10px
+      rgba(0, 0, 0, 0.15)
+    );
+}
+
+
+/* =========================
+   THINKING ANIMATION
+========================= */
+
+.ai-orb.thinking .orb-inner {
+  animation:
+    orbTalking 0.9s
+    ease-in-out infinite alternate;
+}
+
+.ai-orb.thinking .orb-glow {
+  animation:
+    orbThinking 1s
+    ease-in-out infinite alternate;
+}
+
+
+@keyframes orbBreathing {
+
+  0%,
+  100% {
+    transform: scale(0.95);
+
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.08);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes orbFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+
+@keyframes orbTalking {
+
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.09);
+  }
+}
+
+
+@keyframes orbThinking {
+
+  from {
+    transform: scale(0.9);
+
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(1.2);
+
+    opacity: 1;
+  }
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.ai-status {
+  margin-top: 25px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.status-dot {
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #6673e5;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.talking-message {
+  margin: 7px 0 20px;
+
+  color: #8a90a1;
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+
+/* =========================
+   VOICE MODE
+========================= */
+
+.voice-mode {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/*
+   Hide the old VoiceMode header.
+   The main page now handles status.
+*/
+
+.voice-header {
+  display: none;
+}
+
+
+/*
+   Large microphone button
+*/
+
+.voice-button {
+  width: 70px;
+
+  height: 70px;
+
+  border-radius: 50%;
+
+  border: 0;
+
+  background: #171b2d;
+
+  color: white;
+
+  font-size: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-shadow:
+    0 10px 30px
+      rgba(20, 24, 45, 0.18);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.voice-button:hover {
+  transform: scale(1.06);
+
+  box-shadow:
+    0 14px 35px
+      rgba(20, 24, 45, 0.25);
+}
+
+
+/*
+   Listening
+*/
+
+.voice-button.listening {
+  background: #e84d61;
+
+  animation:
+    micPulse 1.2s
+    ease-in-out infinite;
+}
+
+
+@keyframes micPulse {
+
+  0% {
+    box-shadow:
+      0 0 0 0
+      rgba(232, 77, 97, 0.45);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 18px
+      rgba(232, 77, 97, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0
+      rgba(232, 77, 97, 0);
+  }
+}
+
+
+/* STOP SPEAKING */
+
+.voice-stop-button {
+  width: 60px;
+
+  height: 60px;
+
+  border-radius: 50%;
+
+  border: 0;
+
+  background: #f0f1f5;
+
+  font-size: 22px;
+}
+
+
+/* =========================
+   TRANSCRIPT
+========================= */
+
+.voice-transcript {
+  width: min(600px, 90vw);
+
+  margin-top: 15px;
+
+  padding: 12px 17px;
+
+  border-radius: 13px;
+
+  background: white;
+
+  border: 1px solid #e7e9ef;
+
+  text-align: center;
+
+  box-shadow:
+    0 5px 20px
+      rgba(25, 30, 60, 0.04);
+}
+
+.transcript-label {
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  color: #9a9faf;
+
+  margin-bottom: 4px;
+}
+
+.transcript-text {
+  font-size: 14px;
+
+  color: #303548;
+}
+
+
+/* =========================
+   RECENT CONVERSATION
+========================= */
+
+.recent-conversation {
+  width: min(650px, 92vw);
+
+  margin-top: 20px;
+}
+
+.conversation-label {
+  font-size: 11px;
+
+  color: #9a9faf;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+
+  margin-bottom: 7px;
+}
+
+.conversation-box {
+  max-height: 150px;
+
+  overflow-y: auto;
+
+  padding: 10px;
+
+  border-radius: 13px;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.8
+  );
+
+  border: 1px solid #e8eaf0;
+}
+
+.conversation-user,
+.conversation-ai {
+  margin-bottom: 9px;
+}
+
+.conversation-user {
+  text-align: right;
+}
+
+.conversation-name {
+  font-size: 10px;
+
+  color: #9096a6;
+
+  font-weight: 700;
+}
+
+.conversation-box p {
+  margin: 2px 0;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+.conversation-user p {
+  color: #4652c7;
+}
+
+.conversation-ai p {
+  color: #414656;
+}
+
+
+/* =========================
+   BOTTOM INPUT
+========================= */
+
+.bottom-chat {
+  width: min(700px, 94vw);
+
+  padding: 0 0 20px;
+
+  text-align: center;
+}
+
+.text-input-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: white;
+
+  border: 1px solid #e2e5ec;
+
+  border-radius: 15px;
+
+  padding: 5px 6px 5px 14px;
+
+  box-shadow:
+    0 7px 25px
+      rgba(35, 40, 70, 0.05);
+}
+
+.text-input-wrapper textarea {
+  flex: 1;
+
+  border: 0;
+
+  outline: 0;
+
+  resize: none;
+
+  font-size: 14px;
+
+  padding: 10px 0;
+
+  background: transparent;
+}
+
+.send-button {
+  width: 42px;
+
+  height: 42px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background: #4f5bd5;
+
+  color: white;
+
+  font-size: 18px;
+}
+
+.send-button:disabled {
+  opacity: 0.4;
+
+  cursor: default;
+}
+
+.input-hint {
+  margin-top: 7px;
+
+  font-size: 10px;
+
+  color: #a0a5b2;
+}
+
+.clear-chat {
+  margin-top: 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #9a9faf;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-page {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 35px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .top-nav {
+    padding: 0 15px;
+
+    height: 64px;
+  }
+
+  .brand {
+    font-size: 15px;
+  }
+
+  .brand-icon {
+    width: 35px;
+
+    height: 35px;
+
+    font-size: 19px;
+  }
+
+  .nav-button {
+    padding: 8px 9px;
+
+    font-size: 12px;
+  }
+
+  .voice-page-header {
+    padding:
+      22px
+      18px
+      5px;
+  }
+
+  .voice-page-header h1 {
+    font-size: 19px;
+  }
+
+  .talking-area {
+    padding:
+      15px
+      15px
+      20px;
+  }
+
+  .ai-orb {
+    width: 155px;
+
+    height: 155px;
+  }
+
+  .orb-inner {
+    width: 125px;
+
+    height: 125px;
+  }
+
+  .orb-face {
+    font-size: 43px;
+  }
+
+  .bottom-chat {
+    width: 94vw;
+  }
+
+  .recent-conversation {
+    width: 94vw;
+  }
+
+}

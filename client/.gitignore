@@ -1,0 +1,13 @@
+@"
+**/node_modules/
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+dist-ssr/
+*.log
+.vscode/
+.idea/
+.DS_Store
+"@ | Set-Content ".gitignore"
